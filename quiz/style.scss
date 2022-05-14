@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::after,
+*::before{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Raleway', sans-serif;
+    transition: all 0.3s ease-in-out;
+}
+
+main{
+    display: flex;
+    justify-content: space-around;
+    h1{
+        text-align: center;
+        display: inline-block;
+    }
+
+    .night-mode-toggle{
+        width: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+}
+
+
+.stats{
+    display: flex;
+    width: 80%;
+    margin: 3em auto;
+    justify-content: space-between;
+    align-items: center;
+
+    div{
+        font-size: 1.5rem;
+        padding: 0.3em 0.75em;
+    }
+}
+.start,.next{
+    background-color: #0d6efd;
+    border: none;
+    color :white ;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.5s ease-in ;
+
+    &:hover{
+        background-color: #0d6dfd78;
+    }
+}
+
+.container{
+    width: 80%;
+    margin: 0 auto 3em;
+
+    .question{
+        text-align: center;
+        font-size: 1.5rem;
+        margin-bottom: 2em;
+        padding: 0.1em 0.5em;
+    }
+
+    .options{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap : 1em ;
+    }
+
+    .option1,.option2,.option3,.option4{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+
+        pre{
+            padding: 0.5em 1em;
+            font-size: 1rem;
+        }
+        .select{
+            margin-right: 2.5em;
+            background-color: white ;
+            border: none;
+            outline: 3px solid #0d6efd;
+            width: 2.5%;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.1s ease-in ;
+
+            &:hover{
+                outline-width: 3px;
+                outline-color: #ffc107;
+            }
+        }
+    }
+}
+
+.footer{
+    display: flex;
+    width: 80%;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+
+    div{
+        font-size: 1.5rem;
+        padding: 0.3em 0.75em;
+    }
+}
+
+.night-mode{
+    background-color: black;
+    color : white ;
+}
+
+
+@media (max-width:800px) {
+    .stats{
+        flex-direction: column;
+    } 
+}
+
+
+
+@media (max-width:400px) {
+    .container .option1 .select{
+        width : 7px;
+        height: 7px;
+    }
+
+    .container .option2 .select{
+        width : 7px;
+        height: 7px;
+    }
+
+    .container .option3 .select{
+        width : 7px;
+        height: 7px;
+    }
+
+    .container .option4 .select{
+        width : 7px;
+        height: 7px;
+    }
+
+}

@@ -1,11 +1,21 @@
 # E-Cell Projects
 ---
 ## To-Do-List
-### Features in this Project are :
-        - fixed input bar
-        - Add a task (by either hitting enter or clicking on plus)
-        - Serial number of the task
-        - Mark a task as complete
-        - Delete a task
-        - Move a task up or down according to your priority
-        - Counter of done tasks and total tasks
+### Features In This Project Are :
+                - Fixed input bar
+                - Add a task (by either hitting enter or clicking on plus)
+                - Serial number for each task
+                - Mark a task as complete
+                - Delete a task
+                - Move a task up or down according to your priority
+                - Counter of done tasks and total tasks
+
+## Quiz App
+### Features In This Project Are :
+                - Toggle night mode
+                - Counter of correct , incorrect and unattempted Questions
+                - Random 10 questions each time , out of 25 pre decided questions
+                - Random order of options for each question
+                - Time limit of 10 seconds per question
+                - Test ends if the time limit exceeds
+                - Skip a question by clicking on next 

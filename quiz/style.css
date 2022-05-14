@@ -18,6 +18,7 @@ body {
 }
 
 main {
+  margin-top: 1em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

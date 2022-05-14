@@ -95,7 +95,7 @@ function showNextQuestion(){
         tens = 0 ;
             
         clearInterval(timeId) ;
-        alert("Max Questions Reached") ;
+        alert("Max Questions Reached hit start to reset ") ;
         return ;
     }
     const shuffledOptionsArray = shuffledQuestionsArray[currentQuestionNumber].options.sort(() => 0.5 - Math.random()) ;
@@ -155,7 +155,7 @@ function startTimer() {
             seconds = 0;
             tens = 0 ;
             
-            alert("Time's up ! refresh to start again ") ;
+            alert("Time's up ! hit start to reset") ;
             clearInterval(timeId) ;
             
 
@@ -195,9 +195,14 @@ function startTimer() {
 
 
 function startTheQuiz(){
+    if(currentQuestionNumber==numberOfQuestions){
+        location.reload() ;
+        return ;
+    }
     if(currentQuestionNumber!=0){
         return ;
     }
+    nextBtn.addEventListener("click",showNextQuestion) ;
     timeId = setInterval(startTimer, 10);
     showNextQuestion() ;
 }
@@ -214,5 +219,4 @@ function toggleNightMode(){
 }
 
 nightModeToggle.addEventListener("click",toggleNightMode) ;
-nextBtn.addEventListener("click",showNextQuestion) ;
 startBtn.addEventListener("click" ,startTheQuiz) ;

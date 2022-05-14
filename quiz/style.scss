@@ -36,7 +36,7 @@ main{
 .stats{
     display: flex;
     width: 80%;
-    margin: 3em auto;
+    margin: 0.5em auto;
     justify-content: space-between;
     align-items: center;
 
@@ -62,12 +62,12 @@ main{
 
 .container{
     width: 80%;
-    margin: 0 auto 3em;
+    margin: 2em auto 1em;
 
     .question{
         text-align: center;
         font-size: 1.5rem;
-        margin-bottom: 2em;
+        margin-bottom: 1em;
         padding: 0.1em 0.5em;
     }
 
@@ -89,7 +89,7 @@ main{
             font-size: 1rem;
         }
         .select{
-            margin-right: 2.5em;
+            margin-right: 1.5em;
             background-color: white ;
             border: none;
             outline: 3px solid #0d6efd;
@@ -125,16 +125,34 @@ main{
     color : white ;
 }
 
+.time-log{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    width: 80%;
+    margin: 0.5em auto ;
+    height: fit-content;
+
+    pre{
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+}
+
 
 @media (max-width:800px) {
     .stats{
         flex-direction: column;
     } 
+
+    .time-log{
+        grid-template-columns: repeat(3,1fr);
+    }
 }
 
 
 
-@media (max-width:400px) {
+@media (max-width:600px) {
     .container .option1 .select{
         width : 7px;
         height: 7px;
@@ -155,4 +173,7 @@ main{
         height: 7px;
     }
 
+    .time-log{
+        grid-template-columns: repeat(2,1fr);
+    }
 }

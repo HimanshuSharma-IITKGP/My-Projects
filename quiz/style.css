@@ -43,7 +43,7 @@ main .night-mode-toggle {
   display: -ms-flexbox;
   display: flex;
   width: 80%;
-  margin: 3em auto;
+  margin: 0.5em auto;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -75,13 +75,13 @@ main .night-mode-toggle {
 
 .container {
   width: 80%;
-  margin: 0 auto 3em;
+  margin: 2em auto 1em;
 }
 
 .container .question {
   text-align: center;
   font-size: 1.5rem;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   padding: 0.1em 0.5em;
 }
 
@@ -115,7 +115,7 @@ main .night-mode-toggle {
 }
 
 .container .option1 .select, .container .option2 .select, .container .option3 .select, .container .option4 .select {
-  margin-right: 2.5em;
+  margin-right: 1.5em;
   background-color: white;
   border: none;
   outline: 3px solid #0d6efd;
@@ -156,6 +156,24 @@ main .night-mode-toggle {
   color: white;
 }
 
+.time-log {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  width: 80%;
+  margin: 0.5em auto;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.time-log pre {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
 @media (max-width: 800px) {
   .stats {
     -webkit-box-orient: vertical;
@@ -163,9 +181,13 @@ main .night-mode-toggle {
         -ms-flex-direction: column;
             flex-direction: column;
   }
+  .time-log {
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 600px) {
   .container .option1 .select {
     width: 7px;
     height: 7px;
@@ -181,6 +203,10 @@ main .night-mode-toggle {
   .container .option4 .select {
     width: 7px;
     height: 7px;
+  }
+  .time-log {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
   }
 }
 /*# sourceMappingURL=style.css.map */

@@ -44,6 +44,8 @@ const nextBtn = document.querySelector(".next") ;
 const startBtn = document.querySelector(".start") ;
 const nightModeToggle = document.querySelector(".night-mode-toggle") ;
 
+const timeLogDiv = document.querySelector(".time-log") ;
+
 const optionsDiv = Array.from(document.querySelectorAll(".options > div")) ;
 // console.log(optionsDiv);
 
@@ -59,13 +61,14 @@ var timeId ;
 
 
 const shuffledQuestionsArray = questionsArray.sort(() => 0.5 - Math.random());
-console.table(shuffledQuestionsArray) ;
+// console.table(shuffledQuestionsArray) ;
 
 var currentQuestionNumber = 0 ;
 const minutesLimit =  0;
 const secondsLimit = 10 ;
 
 var isAnswered = 0;
+var isCorrect = 0 ;
 
 
 
@@ -75,9 +78,29 @@ function showNextQuestion(){
         unattempted.innerHTML ++ ;
     }
 
-    isAnswered = 0;
 
     clearInterval(timeId) ;
+
+    if(currentQuestionNumber !== 0){
+        const node = document.createElement("pre") ;
+        node.innerHTML = `${currentQuestionNumber}.) ${appendMinutes.innerHTML}:${appendSeconds.innerHTML}` ;
+        timeLogDiv.appendChild(node) ;
+
+        if(isCorrect == 0){
+            node.style.color = "#dc3545" ;
+        }
+        if(isCorrect == 1){
+            node.style.color = "#198754" ;
+        }
+        if(isAnswered == 0){
+            node.style.color = "rgb(255, 149, 0)" ;
+        }
+    }
+
+
+    isAnswered = 0;
+    isCorrect = 0;
+
     appendMinutes.innerHTML = "00" ;
     appendSeconds.innerHTML = "00" ; 
 
@@ -101,11 +124,11 @@ function showNextQuestion(){
     const shuffledOptionsArray = shuffledQuestionsArray[currentQuestionNumber].options.sort(() => 0.5 - Math.random()) ;
 
 
-    container.querySelector(".question").innerHTML = currentQuestionNumber+1 + " . " + shuffledQuestionsArray[currentQuestionNumber].question ;
+    container.querySelector(".question").innerHTML = `${currentQuestionNumber+1} . ${shuffledQuestionsArray[currentQuestionNumber].question}` ;
 
     var i = 1 ;
     optionsDiv.forEach(option => {
-        option.querySelector("pre").innerHTML = i + " . " + shuffledOptionsArray[i-1] ; 
+        option.querySelector("pre").innerHTML = `${i} . ${shuffledOptionsArray[i-1]}` ; 
         i++ ;
     });
 
@@ -125,6 +148,7 @@ function checkAnswer (){
     const correctOption = shuffledQuestionsArray[thisQuestionNumber-1].correctAnswer;
 
     if(correctOption.localeCompare(chosenOption) == 0){
+        isCorrect = 1 ;
         console.log("Correct Answer");
         this.style.backgroundColor = "#198754" ;
         correct.innerHTML ++ ;
@@ -148,6 +172,12 @@ function startTimer() {
 
     if( appendMinutes.innerHTML == minutesLimit &&
         appendSeconds.innerHTML == secondsLimit ){
+
+            const node = document.createElement("pre") ;
+            node.innerHTML = `${currentQuestionNumber}.) ${appendMinutes.innerHTML}:${appendSeconds.innerHTML}` ;
+            timeLogDiv.appendChild(node) ;
+            node.style.color = "rgba(255, 0, 0, 0.512)" ;
+
             appendMinutes.innerHTML = "00" ;
             appendSeconds.innerHTML = "00" ; 
 
@@ -158,7 +188,7 @@ function startTimer() {
             alert("Time's up ! hit start to reset") ;
             clearInterval(timeId) ;
             
-
+            currentQuestionNumber = numberOfQuestions ;
             nextBtn.removeEventListener("click",showNextQuestion) ;
 
             optionsDiv.forEach(option =>{

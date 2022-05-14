@@ -19,3 +19,4 @@
                 - Time limit of 10 seconds per question
                 - Test ends if the time limit exceeds
                 - Skip a question by clicking on next 
+                - Log of time spent on each Question

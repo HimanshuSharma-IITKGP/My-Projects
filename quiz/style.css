@@ -24,11 +24,15 @@ main {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 main h1 {
   text-align: center;
   display: inline-block;
+  letter-spacing: 0.25em;
 }
 
 main .night-mode-toggle {
@@ -38,12 +42,34 @@ main .night-mode-toggle {
   transition: all 0.3s ease-in-out;
 }
 
+main .animation-box {
+  width: 80px;
+  height: 30px;
+  border-radius: 15px;
+  position: relative;
+}
+
+main .animation-box .animation {
+  position: absolute;
+  background-color: #dc3545;
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+  top: 0;
+  left: 0;
+}
+
+.animate {
+  -webkit-animation: timeAnimation 1s linear 1s infinite alternate;
+          animation: timeAnimation 1s linear 1s infinite alternate;
+}
+
 .stats {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   width: 80%;
-  margin: 0.5em auto;
+  margin: 1em auto;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -146,6 +172,10 @@ main .night-mode-toggle {
           align-items: center;
 }
 
+.footer .timer {
+  font-size: 1.5rem;
+}
+
 .footer div {
   font-size: 1.5rem;
   padding: 0.3em 0.75em;
@@ -162,7 +192,7 @@ main .night-mode-toggle {
   -ms-grid-columns: (1fr)[4];
       grid-template-columns: repeat(4, 1fr);
   width: 80%;
-  margin: 0.5em auto;
+  margin: 1em auto;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -207,6 +237,24 @@ main .night-mode-toggle {
   .time-log {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@-webkit-keyframes timeAnimation {
+  from {
+    left: 0;
+  }
+  to {
+    left: 45px;
+  }
+}
+
+@keyframes timeAnimation {
+  from {
+    left: 0;
+  }
+  to {
+    left: 45px;
   }
 }
 /*# sourceMappingURL=style.css.map */

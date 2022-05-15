@@ -14,7 +14,7 @@
 ### Features In This Project Are :
                 - Toggle night mode
                 - Counter of correct , incorrect and unattempted Questions
-                - Random 10 questions each time , out of 25 pre decided questions
+                - Random 10 questions each time , out of 50 pre decided questions
                 - Random order of options for each question
                 - Time limit of 10 seconds per question
                 - Test ends if the time limit exceeds

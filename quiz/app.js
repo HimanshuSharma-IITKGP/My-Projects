@@ -2,6 +2,7 @@ class Question{
     constructor(q,op1,op2,op3,op4){
         this.question = q ;
         this.options = [op1,op2,op3,op4] ;
+        // while declaring an object of Question class i will write the 4th option to be correct one
         this.correctAnswer = op4 ;
     }
 }
@@ -18,7 +19,6 @@ const questionsArray = [new Question("What is the most densely populated U.S. st
                         new Question("On the TV sitcom Seinfeld, what is Kramer’s first name?" ,"Kessler" , "Newman" , "Larry", "Cosmo"),
                         new Question("Which style of art was produced in, or under the influence of, the Eastern Roman Empire?" , "Levantine" ,"Baroque" ,"Sotiy" ,"Byzantine") ,
                         new Question("Which state of the U.S. has recorded the fastest surface wind?" ,"Illinois" ,"Montana" ,"Alaska" ,"New Hampshire") ,
-                        new Question("Which country will have the highest estimated net increase in population between 1995-2000 (16 million more people)?" ,"China" ,"Bangladesh" ,"Nigeria","India"),
                         new Question("The jelly-like substance that makes up most of a cell is the:" , "DNA" ,"Nucleus" ,"Chloroplast" ,"Cytoplasm"),
                         new Question("Find the odd word out.",  "For" ,"By" ,"Near" ,"Yet") ,
                         new Question("What is the capital of French Polynesia?" , "Praia" , "Moroni" ,"Cayenne" ,"Papeete"),
@@ -30,7 +30,33 @@ const questionsArray = [new Question("What is the most densely populated U.S. st
                         new Question("What is the name of the Chicago Fire’s soccer stadium?" , "CenturyLink Field" , "Allianz Field" , "Dignity Health Sports Park" , "Toyota Park") ,
                         new Question("Who won Chelsea player of the year in 2012 and 2013?" , "Eden Hazard" , "David Luiz" , "Fabio Borini" , "Juan Mata") ,
                         new Question("Who scored the first goal at Wembley Stadium?" , "Fernando Cabrita" , "Josep Seguer" , "Olavo Rodrigues Barbosa" , "David Jack"),
-                        new Question("What day of the year is considered National Pi Day?" , "14th November" , "14th May" ,"14th September" ,"14th March")] ;
+                        new Question("What day of the year is considered National Pi Day?" , "14th November" , "14th May" ,"14th September" ,"14th March"),
+                        new Question("Who sang the title song for the latest Bond film, No Time to Die?" , "Adele" , "Sam Smith" , "Raftaar" , "Billie Eilish") ,
+                        new Question("Which flies a green, white, and orange (in that order) tricolour flag?" , "Ireland" , "Ivory Coast","I don't know" , "Italy"),
+                        new Question("What company makes the Xperia model of smartphone?" , "Apple" , "Samsung" , "Nokia" , "Sony") ,
+                        new Question("Where was the first example of paper money used?","India" , "Turkey" , "US" , "China"),
+                        new Question("Which of the following languages has the longest alphabet?" , "English" , "Greek" , "Arabic" , "Russian") ,
+                        new Question("The fear of insects is known as what?" , "Hydrophobia" , "Arachnophobia" , "Ailurophobia" , "Entomophobia") ,
+                        new Question("Which horoscope sign is a fish?" , "Cancer" ,"Leo" , "Aquarius" , "Pisces") ,
+                        new Question("Which Game of Thrones character is known as the Young Wolf?"  ,"I haven't seen it", "Arya Stark" , "Sansa Stark" , "Robb Stark"),
+                        new Question("What city hosted the 2002 Olympic Games?" , "India" , "Tokyo" , "China" , "Beijing") ,
+                        new Question("Who directed the Academy award winning movie Gladiator?" , "James Cameron" ,"Steven Soderbergh" ,"Christopher Nolan", "Ridley Scott") ,
+                        new Question("What is the strongest muscle in the human body?" , "Heart" , "Glutes" ,"Biceps" , "Jaw") ,
+                        new Question("Where was tea invented?" ,"India" , "England" , "Brazil" , "China"),
+                        new Question("Where was the earliest documented case of the Spanish flu?" , "France" ,"Spain", "Mexico","USA"),
+                        new Question("In 1768, Captain James Cook set out to explore which ocean?" , "Atlantic Ocean" , "Indian Ocean" , "Arctic Ocean" , "Pacific Ocean") ,
+                        new Question("Which of the following is not an international organisation?" , "FIFA" , "NATO" , "ASEAN" , "FBI") ,
+                        new Question("What was the first country to use tanks in combat during World War I?" , "France" , "Japna" , "Germany" , "Britain"),
+                        new Question("Which two months are named after Emperors of the Roman Empire?" , "January and February" , "March and April" , "May and June" , "July and August") ,
+                        new Question("Which of the following actors was the first one to play James Bond?", "Timothy Dalton" , "Roger Moore" , "Chris Rock" , "Sean Connery") ,
+                        new Question("In which country is Transylvania?" , "Bulgaria" , "Croatia" ,"Serbia", "Romania"),
+                        new Question("The phrase: ”I think, therefore I am” was coined by which philosopher?" , "Socrates" , "Plato" , "Aristotle" , "Descartes") ,
+                        new Question("Who is known as the Patron Saint of Spain?" , "St Patrick" , "St Benedict" , "St John" , "St James"),
+                        new Question("What does the term “SOS” commonly stand for?" , "Save Our Sheep" , "Save Our Ship" , "Save Our Seal" , "Save Our Souls") ,
+                        new Question("What is the name of the first book of the Old Testament in the Bible?" , "Exodus" , "Proverbs" , "Mathers" , "Genesis"),
+                        new Question("How many time zones are there in total in the world?" , "8" , "16" , "32" , "24"),
+                        new Question("What is the rarest type of blood in the human body?" , "O positive" , "B negative" , "A negative" , "AB negative"),
+                        new Question("Cu is the chemical symbol for which element?" , "Cobalt" , "Iron" , "Silver" , "Copper")] ;
 
 
 
@@ -43,11 +69,11 @@ const unattempted = document.querySelector(".unattempted") ;
 const nextBtn = document.querySelector(".next") ;
 const startBtn = document.querySelector(".start") ;
 const nightModeToggle = document.querySelector(".night-mode-toggle") ;
-
+const animationCircle = document.querySelector(".animation") ;
 const timeLogDiv = document.querySelector(".time-log") ;
 
 const optionsDiv = Array.from(document.querySelectorAll(".options > div")) ;
-// console.log(optionsDiv);
+
 
 var appendMinutes = document.getElementById("minutes");
 var appendSeconds = document.getElementById("seconds");
@@ -59,9 +85,9 @@ var tens = 00;
 
 var timeId ;
 
-
+// shuffling the entire questions array
 const shuffledQuestionsArray = questionsArray.sort(() => 0.5 - Math.random());
-// console.table(shuffledQuestionsArray) ;
+console.table(shuffledQuestionsArray) ;
 
 var currentQuestionNumber = 0 ;
 const minutesLimit =  0;
@@ -74,13 +100,16 @@ var isCorrect = 0 ;
 
 function showNextQuestion(){
 
+    // if the question has not been attempted
     if(isAnswered == 0 && currentQuestionNumber!=0){
         unattempted.innerHTML ++ ;
     }
 
 
+    //stopping the clock
     clearInterval(timeId) ;
 
+    // tracking and displaying the time of individual questions and their text color according to correctness
     if(currentQuestionNumber !== 0){
         const node = document.createElement("pre") ;
         node.innerHTML = `${currentQuestionNumber}.) ${appendMinutes.innerHTML}:${appendSeconds.innerHTML}` ;
@@ -101,6 +130,7 @@ function showNextQuestion(){
     isAnswered = 0;
     isCorrect = 0;
 
+    // restarting the clock 
     appendMinutes.innerHTML = "00" ;
     appendSeconds.innerHTML = "00" ; 
 
@@ -110,6 +140,7 @@ function showNextQuestion(){
 
     timeId = setInterval(startTimer , 10) ;
 
+    // if max questions are reached
     if(currentQuestionNumber>=numberOfQuestions){
         appendMinutes.innerHTML = "00" ;
         appendSeconds.innerHTML = "00" ; 
@@ -117,21 +148,26 @@ function showNextQuestion(){
         seconds = 0;
         tens = 0 ;
             
+        // stopping the clock and the animation
+        animationCircle.classList.remove("animate") ;
         clearInterval(timeId) ;
         alert("Max Questions Reached hit start to reset ") ;
         return ;
     }
+
     const shuffledOptionsArray = shuffledQuestionsArray[currentQuestionNumber].options.sort(() => 0.5 - Math.random()) ;
 
-
+    // putting question
     container.querySelector(".question").innerHTML = `${currentQuestionNumber+1} . ${shuffledQuestionsArray[currentQuestionNumber].question}` ;
 
+    // putting options 
     var i = 1 ;
     optionsDiv.forEach(option => {
         option.querySelector("pre").innerHTML = `${i} . ${shuffledOptionsArray[i-1]}` ; 
         i++ ;
     });
 
+    //adding event listener to each select and changing their color to default
     optionsDiv.forEach(option =>{
         option.querySelector(".select").addEventListener("click",checkAnswer) ;
         option.querySelector(".select").style.backgroundColor = "white" ;
@@ -144,6 +180,7 @@ function checkAnswer (){
     const thisQuestion = this.parentNode.parentNode.previousElementSibling.innerHTML ;
     const thisQuestionNumber = parseInt(thisQuestion.substring(0,thisQuestion.indexOf("."))) ;
 
+    // strings of chosenOption and CorrectOption
     const chosenOption = this.previousElementSibling.innerHTML.substring(this.previousElementSibling.innerHTML.indexOf(".")+2) ;
     const correctOption = shuffledQuestionsArray[thisQuestionNumber-1].correctAnswer;
 
@@ -164,12 +201,14 @@ function checkAnswer (){
         option.querySelector(".select").removeEventListener("click" ,checkAnswer) ;
     });
 
+    // added a little time delay to be able to see the effect of color change on selected option
     setTimeout(showNextQuestion ,500) ;
 }
 
 
 function startTimer() {
 
+    // if limit of max time is reached
     if( appendMinutes.innerHTML == minutesLimit &&
         appendSeconds.innerHTML == secondsLimit ){
 
@@ -185,12 +224,15 @@ function startTimer() {
             seconds = 0;
             tens = 0 ;
             
+
+            //stopping the clock and animation and removing event listener from next button
             alert("Time's up ! hit start to reset") ;
             clearInterval(timeId) ;
             
             currentQuestionNumber = numberOfQuestions ;
             nextBtn.removeEventListener("click",showNextQuestion) ;
 
+            animationCircle.classList.remove("animate") ;
             optionsDiv.forEach(option =>{
                 option.querySelector(".select").removeEventListener("click" ,checkAnswer) ;
             });
@@ -225,13 +267,17 @@ function startTimer() {
 
 
 function startTheQuiz(){
+    // if end is reached then reload the page on clicking start
     if(currentQuestionNumber==numberOfQuestions){
         location.reload() ;
         return ;
     }
+    // if someone clicks start in the middle of quiz
     if(currentQuestionNumber!=0){
         return ;
     }
+    // start animation and clock and add event listener to next button
+    animationCircle.classList.add("animate") ;
     nextBtn.addEventListener("click",showNextQuestion) ;
     timeId = setInterval(startTimer, 10);
     showNextQuestion() ;
@@ -240,6 +286,7 @@ function startTheQuiz(){
 function toggleNightMode(){
     document.querySelector("body").classList.toggle("night-mode") ;
     
+    // changing the attribute of svg
     if(this.getAttribute("stroke") == "#2c3e50"){
         this.setAttribute("stroke" , "#ffffff");
     }

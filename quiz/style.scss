@@ -37,14 +37,14 @@ main{
     
     .animation-box{
         width: 80px;
-        height: 30px;
+        height: 15px;
         border-radius: 15px;
         position: relative;
         .animation{
             position: absolute;
             background-color: #dc3545;
-            height: 30px;
-            width: 30px;
+            height: 15px;
+            width: 15px;
             border-radius: 15px;
             top: 0;
             left :0 ;
@@ -76,16 +76,16 @@ main{
     border-radius: 5px;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.5s ease-in ;
+    transition: background-color 0.3s ease-in ;
 
     &:hover{
-        background-color: #0d6dfd78;
+        background-color: #ffc107;
     }
 }
 
 .container{
     width: 80%;
-    margin: 2em auto 1em;
+    margin: 2em auto 2em;
 
     .question{
         text-align: center;

@@ -205,7 +205,6 @@ function checkAnswer (){
     setTimeout(showNextQuestion ,500) ;
 }
 
-
 function startTimer() {
 
     // if limit of max time is reached
@@ -262,9 +261,6 @@ function startTimer() {
         appendMinutes.innerHTML = minutes ;
     }
 }
-
-
-
 
 function startTheQuiz(){
     // if end is reached then reload the page on clicking start

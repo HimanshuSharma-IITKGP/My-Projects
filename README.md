@@ -20,3 +20,11 @@
                 - Test ends if the time limit exceeds
                 - Skip a question by clicking on next 
                 - Log of time spent on each Question
+
+## Tic-Tac-Toe Game
+### Features In This Project Are : 
+                - Multiple games can be played without resetting
+                - Computer plays a random move based on location of empty cells
+                - Tracking the score of computer and user
+                - Each individual game can be played from different options (cross/circle)
+                - Reset button reset back everything

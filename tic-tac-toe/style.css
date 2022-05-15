@@ -1,0 +1,211 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;600;700;800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::after,
+*::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inconsolata', monospace;
+}
+
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 400;
+  color: purple;
+}
+
+.bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-block: 0.5em;
+  width: 60%;
+  margin: 0.25em auto 0;
+}
+
+.bar .cross-option,
+.bar .circle-option {
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+  background-color: transparent;
+  padding: 0.4em 0.5em;
+  border: none;
+  border-radius: 3px;
+}
+
+.bar .cross-option:hover,
+.bar .circle-option:hover {
+  background-color: #ff7675;
+}
+
+.bar .reset {
+  cursor: pointer;
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  font-size: 1.7rem;
+  padding: 0.25em 0.75em;
+  border-radius: 5px;
+  margin: auto !important;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: 'Inconsolata', monospace;
+}
+
+.bar .reset:hover {
+  background-color: #17b0f7;
+}
+
+.result {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80%;
+  margin: auto;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding-block: 0.5em;
+  font-size: 2rem;
+  color: #0fbcf9;
+  gap: 0.5em;
+  font-family: 'Inconsolata', monospace;
+}
+
+.result .scores {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  font-size: 3rem;
+  background-color: #ffd32a;
+  padding: 0.5em 2em;
+  width: 10%;
+  margin: auto;
+  border-radius: 3px;
+  outline: 3px green solid;
+  position: relative;
+}
+
+.result .scores::before {
+  content: "COMP";
+  font-size: 1rem;
+  color: #dc3545;
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+  padding: 0.5em 1em;
+  border-radius: 3px;
+  outline: #28a745 2px solid;
+  font-weight: 600;
+  background-color: #4bcffa;
+}
+
+.result .scores::after {
+  content: "USER";
+  font-size: 1rem;
+  color: #dc3545;
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  padding: 0.5em 1em;
+  border-radius: 3px;
+  outline: #28a745 2px solid;
+  font-weight: 600;
+  background-color: #4bcffa;
+}
+
+.result .message {
+  word-wrap: break-word;
+}
+
+.container {
+  width: 25%;
+  aspect-ratio: 1;
+  margin: 1.2em auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  background-color: #81ecec;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 10px;
+  outline: 0.9em solid #81ecec;
+}
+
+.cell {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #ff7675;
+  width: 95%;
+  aspect-ratio: 1;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.fa-times {
+  font-size: 400%;
+  color: #05c46b;
+  cursor: pointer;
+}
+
+.fa-circle-o {
+  font-size: 400%;
+  color: #6c5ce7;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .container {
+    width: 40%;
+  }
+}
+
+@media (max-width: 600px) {
+  .fa-times {
+    font-size: 250%;
+  }
+  .fa-circle-o {
+    font-size: 250%;
+  }
+  .container {
+    outline-width: 5px;
+  }
+}
+/*# sourceMappingURL=style.css.map */

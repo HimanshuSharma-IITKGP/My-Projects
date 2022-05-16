@@ -24,7 +24,8 @@
 ## Tic-Tac-Toe Game
 ### Features In This Project Are : 
                 - Multiple games can be played without resetting
-                - Computer plays a random move based on location of empty cells
-                - Tracking the score of computer and user
+                - Computer plays the best move
+                - Tracks the score of computer and user
+                - Counter of total games played
                 - Each individual game can be played from different options (cross/circle)
                 - Reset button reset back everything

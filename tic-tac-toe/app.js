@@ -30,6 +30,9 @@ const cells = Array.from(document.querySelectorAll(".cell"));
 
 
 crossOption.addEventListener("click", () => {
+    if(emptyCells!=9){
+        return ;
+    }
     user = "times";
     computer = "circle-o";
 
@@ -38,6 +41,9 @@ crossOption.addEventListener("click", () => {
 
 
 circleOption.addEventListener("click", () => {
+    if(emptyCells!=9){
+        return ;
+    }
     user = "circle-o";
     computer = "times";
 
@@ -53,8 +59,12 @@ function startGame(){
         cell.addEventListener("click", playerMove);
     });
 
-    crossOption.style.opacity = "0";
-    circleOption.style.opacity = "0";
+    if(user=="circle-o"){
+        circleOption.style.backgroundColor = "#ff7675";
+    }
+    else{
+        crossOption.style.backgroundColor = "#ff7675";
+    }
 }
 
 
@@ -311,8 +321,8 @@ function resetContainer() {
 
     message.innerHTML = "Let's Play Again";
 
-    crossOption.style.opacity = "1";
-    circleOption.style.opacity = "1";
+    crossOption.style.backgroundColor = "transparent";
+    circleOption.style.backgroundColor = "transparent";
 }
 
 

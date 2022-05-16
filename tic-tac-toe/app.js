@@ -1,13 +1,20 @@
 const container = document.querySelector(".container");
-const message = document.querySelector(".message") ;
-const crossOption = document.querySelector(".cross-option") ;
-const circleOption = document.querySelector(".circle-option") ;
-const reset = document.querySelector(".reset") ;
-const userScore = document.querySelector(".user-score") ;
-const computerScore = document.querySelector(".computer-score") ;
-console.log(message);
-// console.log(crossOption , circleOption);
-// console.log(container);
+const message = document.querySelector(".message");
+const crossOption = document.querySelector(".cross-option");
+const circleOption = document.querySelector(".circle-option");
+const reset = document.querySelector(".reset");
+const computerScore = document.querySelector(".computer-score");
+const userScore = document.querySelector(".user-score");
+const gameCount = document.querySelector(".games-count") ;
+console.log(gameCount);
+
+var gameState =    [["e", "e", "e"],
+                    ["e", "e", "e"],
+                    ["e", "e", "e"]];
+var emptyCells = 9;
+var computer = "";
+var user = "";
+
 
 for (let i = 0; i < 9; i++) {
     const cell = document.createElement("div");
@@ -20,16 +27,38 @@ for (let i = 0; i < 9; i++) {
 }
 
 const cells = Array.from(document.querySelectorAll(".cell"));
-var gameState =[["e", "e", "e"],
-                ["e", "e", "e"],
-                ["e", "e", "e"]];
-var emptyCells = 9;
-var user = "";
-var computer = "";
-// console.log(cells);
 
 
-function userMove() {
+crossOption.addEventListener("click", () => {
+    user = "times";
+    computer = "circle-o";
+
+    startGame() ;
+})
+
+
+circleOption.addEventListener("click", () => {
+    user = "circle-o";
+    computer = "times";
+
+    startGame() ;
+})
+
+reset.addEventListener("click", () => {
+    location.reload();
+})
+
+function startGame(){
+    cells.forEach(cell => {
+        cell.addEventListener("click", playerMove);
+    });
+
+    crossOption.style.opacity = "0";
+    circleOption.style.opacity = "0";
+}
+
+
+function playerMove() {
     if (this.classList.contains("fa")) {
         return;
     }
@@ -37,56 +66,59 @@ function userMove() {
     this.classList.add(`fa`);
     this.classList.add(`fa-${user}`);
 
-    
+
     gameState[this.getAttribute("cell-row-index")][this.getAttribute("cell-col-index")] = "p";
+    
     if (emptyCells == 1) {
-        // console.log(gameState);
-        // alert("checking for win");
-        if (isWinning(["c", "c", "c"])) {
-            message.innerHTML = "I Won" ;
-            computerScore.innerHTML ++ ;
+        if (evaluate(gameState)>0) {
+            message.innerHTML = "I Won";
+            computerScore.innerHTML++;
+            gameCount.innerHTML++ ;
             removeListener();
-            setTimeout(resetContainer,2000) ;
-            return ;
+            setTimeout(resetContainer, 2000);
+            return;
         }
 
-        if (isWinning(["p", "p", "p"])) {
-            message.innerHTML = "You Won" ;
-            userScore.innerHTML ++ ;
+        if (evaluate(gameState)<0) {
+            message.innerHTML = "You Won";
+            userScore.innerHTML++;
+            gameCount.innerHTML++ ;
             removeListener();
-            setTimeout(resetContainer,2000) ;
-            return ;
+            setTimeout(resetContainer, 2000);
+            return;
         }
 
         else {
-            message.innerHTML = "DRAW" ;
+            message.innerHTML = "DRAW";
+            gameCount.innerHTML++ ;
             removeListener();
-            setTimeout(resetContainer,2000) ;
-            return ;
+            setTimeout(resetContainer, 2000);
+            return;
         }
         //check for win , lose or draw
     }
-    
-    if (isWinning(["c", "c", "c"])) {
+
+    if (evaluate(gameState)>0) {
         removeListener();
-        message.innerHTML = "I Won" ;
-        computerScore.innerHTML ++ ;
-        setTimeout(resetContainer,2000) ;
-        return ;
+        message.innerHTML = "I Won";
+        computerScore.innerHTML++;
+        gameCount.innerHTML++ ;
+        setTimeout(resetContainer, 2000);
+        return;
     }
 
-    if (isWinning(["p", "p", "p"])) {
+    if (evaluate(gameState)<0) {
         removeListener();
-        message.innerHTML = "You Won" ;
-        userScore.innerHTML ++ ;
-        setTimeout(resetContainer,2000) ;
-        return ;
+        message.innerHTML = "You Won";
+        userScore.innerHTML++;
+        gameCount.innerHTML++ ;
+        setTimeout(resetContainer, 2000);
+        return;
     }
 
 
     emptyCells--;
-
-    console.log(`emptyCells => ${emptyCells}`);
+    removeListener() 
     setTimeout(computerMove, 1000);
 }
 
@@ -95,129 +127,200 @@ function userMove() {
 function computerMove() {
 
 
-    var row = Math.floor(Math.random() * 3);
-    var col = Math.floor(Math.random() * 3);
-
-    while (gameState[row][col] != "e") {
-        row = Math.floor(Math.random() * 3);
-        col = Math.floor(Math.random() * 3);
-    }
+    bestMove = findBestMove(gameState) ;
+    const row = bestMove.row ;
+    const col = bestMove.col ;
 
     gameState[row][col] = "c";
-    emptyCells -- ;
-    console.log(`emptyCells => ${emptyCells}`);
-    console.log(row, col);
+    emptyCells--;
     const comp = document.querySelector(`[cell-index="${3 * row + col}"]`)
     comp.classList.add(`fa`);
     comp.classList.add(`fa-${computer}`);
 
-    if(isWinning(["c","c","c"])){
-        message.innerHTML = "I Won" ;
-        userScore.innerHTML ++ ;
+    if (evaluate(gameState)>0) {
+        message.innerHTML = "I Won";
+        computerScore.innerHTML++;
+        gameCount.innerHTML++ ;
         removeListener();
-        setTimeout(resetContainer,2000) ;
+        setTimeout(resetContainer, 2000);
 
+        return;
+    }
+
+    if (evaluate(gameState)<0) {
+        message.innerHTML = "You Won";
+        userScore.innerHTML++;
+        gameCount.innerHTML++ ;
+        removeEventListener();
+        setTimeout(resetContainer, 2000);
         return ;
     }
 
-    if(isWinning(["p","p","p"])){
-        message.innerHTML = "You Won" ;
-        userScore.innerHTML ++ ;
-        
-        removeEventListener() ;
-        setTimeout(resetContainer,2000) ;
-        
-    }
+    cells.forEach(cell => {
+        cell.addEventListener("click", playerMove);
+    });
 }
 
-function isWinning(player) {
-    if (JSON.stringify(gameState[0])==JSON.stringify(player) || JSON.stringify(gameState[1])==JSON.stringify(player) || JSON.stringify(gameState[2])==JSON.stringify(player)) {
-        console.log("row matched");
-        return true;
+
+
+
+class Move {
+    constructor(a, b) {
+        this.row = a;
+        this.col = b;
     }
+};
 
 
-    for (let j = 0; j < 3; j++) {
-        let k = 0;
-        for (let i = 0; i < 3; i++) {
-            if (gameState[i][j] == player[0]) {
-                k++;
-            }
-        }
-
-        if (k == 3) {
-            console.log(`column ${j} Matched`);
-            return true;
-        }
-    }
 
 
-    if (gameState[0][0] == player[0] && gameState[1][1] == player[0] && gameState[2][2] == player[0]) {
-        console.log("first diagonal matched");
-        return true;
-    }
-
-    if (gameState[0][2] == player[0] && gameState[1][1] == player[0] && gameState[2][0] == player[0]) {
-        console.log("Second Diagonal Matched");
-        return true;
-    }
-
+function isMovesLeft(board) {
+    for (let i = 0; i < 3; i++)
+        for (let j = 0; j < 3; j++)
+            if (board[i][j] == 'e')
+                return true;
     return false;
 }
 
+function evaluate(b) {
+    // Checking for Rows for X or O victory.
+    for (let row = 0; row < 3; row++) {
+        if (b[row][0] == b[row][1] &&
+            b[row][1] == b[row][2]) {
+            if (b[row][0] == 'c')
+                return +10;
+            else if (b[row][0] == 'p')
+                return -10;
+        }
+    }
 
-function resetContainer(){
+    // Checking for Columns for X or O victory.
+    for (let col = 0; col < 3; col++) {
+        if (b[0][col] == b[1][col] &&
+            b[1][col] == b[2][col]) {
+            if (b[0][col] == 'c')
+                return +10;
+
+            else if (b[0][col] == 'p')
+                return -10;
+        }
+    }
+
+    // Checking for Diagonals for X or O victory.
+    if (b[0][0] == b[1][1] && b[1][1] == b[2][2]) {
+        if (b[0][0] == 'c')
+            return +10;
+        else if (b[0][0] == 'p')
+            return -10;
+    }
+
+    if (b[0][2] == b[1][1] && b[1][1] == b[2][0]) {
+        if (b[0][2] == 'c')
+            return +10;
+        else if (b[0][2] == 'p')
+            return -10;
+    }
+    return 0;
+}
+
+
+function minimax(board, depth, isMax) {
+    let score = evaluate(board);
+
+
+    if (score == 10) {
+        return score;
+    }
+
+    if (score == -10) {
+        return score;
+    }
+
+    if (isMovesLeft(board) == false) {
+        return 0;
+    }
+
+    if (isMax) {
+        let best = -1000;
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                if (board[i][j] == 'e') {
+                    board[i][j] = 'c';
+                    best = Math.max(best, minimax(board, depth + 1, !isMax));
+                    board[i][j] = 'e';
+                }
+            }
+        }
+        return best;
+    }
+
+    else {
+        let best = 1000;
+
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                if (board[i][j] == 'e') {
+                    board[i][j] = 'p';
+                    best = Math.min(best, minimax(board, depth + 1, !isMax));
+                    board[i][j] = 'e';
+                }
+            }
+        }
+        return best;
+    }
+}
+
+
+function findBestMove(board){
+    let bestVal = -1000;
+    bestMove = new Move(-1,-1);
+
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (board[i][j] == 'e') {
+                board[i][j] = 'c';
+                let moveVal = minimax(board, 0, false);
+                board[i][j] = 'e';
+                if (moveVal > bestVal) {
+                    bestMove.row = i;
+                    bestMove.col = j;
+                    bestVal = moveVal;
+                }
+            }
+        }
+    }
+
+    return bestMove;
+}
+
+
+
+
+function resetContainer() {
     cells.forEach(cell => {
-        cell.removeEventListener("click",userMove) ;
-        cell.classList.remove("fa") ;
-        cell.classList.remove("fa-times") ;
-        cell.classList.remove("fa-circle-o") ;
+        cell.classList.remove("fa");
+        cell.classList.remove("fa-times");
+        cell.classList.remove("fa-circle-o");
     });
 
     gameState =[["e", "e", "e"],
                 ["e", "e", "e"],
                 ["e", "e", "e"]];
 
-    emptyCells = 9 ;
+    emptyCells = 9;
 
-    message.innerHTML = "Let's Play Again !" ;
+    message.innerHTML = "Let's Play Again !";
 
-    crossOption.style.opacity = "1" ;
-    circleOption.style.opacity = "1" ;
+    crossOption.style.opacity = "1";
+    circleOption.style.opacity = "1";
 }
 
-function removeListener(){
+
+function removeListener() {
     cells.forEach(cell => {
-        cell.removeEventListener("click",userMove) ;
+        cell.removeEventListener("click", playerMove);
     });
 }
 
-crossOption.addEventListener("click",()=>{
-    user = "times" ;
-    computer = "circle-o";
 
-    cells.forEach(cell => {
-        cell.addEventListener("click", userMove);
-    });
-
-    crossOption.style.opacity = "0" ;
-    circleOption.style.opacity = "0" ;
-})
-
-
-circleOption.addEventListener("click",()=>{
-    user = "circle-o" ;
-    computer = "times";
-
-    cells.forEach(cell => {
-        cell.addEventListener("click", userMove);
-    });
-
-    crossOption.style.opacity = "0" ;
-    circleOption.style.opacity = "0" ;
-})
-
-reset.addEventListener("click" , ()=>{
-    location.reload() ;
-})
 

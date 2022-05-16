@@ -21,7 +21,7 @@ h1{
     color: purple;
 }
 
-.bar {
+.controls {
     display: flex;
     justify-content: center;
     margin-block: 0.5em;
@@ -55,6 +55,8 @@ h1{
         &:hover {
             background-color: #17b0f7;
         }
+
+        
     }
 }
 
@@ -116,10 +118,19 @@ h1{
             background-color: #4bcffa;
         }
     }
+    .review{
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
 
-    .message{
-        word-wrap: break-word;
+        .games{
+            position: relative;
+            left: 50px;
+        }
     }
+
 }
 
 
@@ -181,6 +192,10 @@ h1{
 
     .container{
         outline-width: 5px;
+    }
+
+    .games{
+        display: none;
     }
 }
 

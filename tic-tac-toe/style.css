@@ -79,6 +79,7 @@ h1 {
       -ms-flex-align: center;
           align-items: center;
   width: 80%;
+  text-align: center;
   margin: auto;
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -122,6 +123,7 @@ h1 {
   outline: #28a745 2px solid;
   font-weight: 600;
   background-color: #4bcffa;
+  letter-spacing: 5px;
 }
 
 .result .scores::after {
@@ -138,6 +140,7 @@ h1 {
   outline: #28a745 2px solid;
   font-weight: 600;
   background-color: #4bcffa;
+  letter-spacing: 5px;
 }
 
 .result .review {
@@ -224,6 +227,15 @@ h1 {
   }
   .games {
     display: none;
+  }
+}
+
+@media (max-width: 300px) {
+  .fa-times {
+    font-size: 200%;
+  }
+  .fa-circle-o {
+    font-size: 200%;
   }
 }
 /*# sourceMappingURL=style.css.map */

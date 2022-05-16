@@ -66,6 +66,7 @@ h1{
     flex-direction: column;
     align-items: center;
     width: 80%;
+    text-align: center;
     margin: auto;
     height: fit-content;
     padding-block: 0.5em;
@@ -100,6 +101,7 @@ h1{
             outline: #28a745 2px solid;
             font-weight: 600;
             background-color: #4bcffa;
+            letter-spacing: 5px;
         }
 
 
@@ -116,6 +118,7 @@ h1{
             outline: #28a745 2px solid;
             font-weight: 600;
             background-color: #4bcffa;
+            letter-spacing: 5px;
         }
     }
     .review{
@@ -198,4 +201,16 @@ h1{
         display: none;
     }
 }
+
+@media (max-width:300px) {
+    .fa-times {
+        font-size: 200%;
+    }
+    
+    
+    .fa-circle-o {
+        font-size: 200%;
+    }
+}
+
 

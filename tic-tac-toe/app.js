@@ -309,7 +309,7 @@ function resetContainer() {
 
     emptyCells = 9;
 
-    message.innerHTML = "Let's Play Again !";
+    message.innerHTML = "Let's Play Again";
 
     crossOption.style.opacity = "1";
     circleOption.style.opacity = "1";

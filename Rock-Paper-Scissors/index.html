@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./style.css">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <!-- score board
+    3 buttons for the user's choice
+    computer's choice
+    a message for current game -->
+    <header>
+        <h1>ROCK PAPER SCISSORS</h1>
+    </header>
+
+    <main>
+        <h2>SCORES</h2>
+        <div class="score-board">
+            <span id="user-score">0</span> :
+            <span id="computer-score">0</span>
+        </div>
+
+        <div class="choices">
+            <button id="r">
+                <img src="./r.png" width="100px" alt="">
+            </button>
+            <button id="p">
+                <img src="./p.png" width="100px" alt="">
+            </button>
+            <button id="s">
+                <img src="./s.png" width="100px" alt="">
+            </button>
+        </div>
+
+
+        <div id="result">LET'S PLAY</div>
+        <div class="container">
+            <div id="computer-choice">
+                <h3>Computer</h3>
+                <img src="./rock-paper-scissors-line-icons.svg" width="250px" height="250px" alt="">
+            </div>
+            <div id="user-choice">
+                <h3>You</h3>
+                <img src="./rock-paper-scissors-line-icons.svg" width="250px" height="250px" alt="">
+            </div>
+        </div>
+
+
+        <script src="./app.js"></script>
+    </main>
+</body>
+</html>

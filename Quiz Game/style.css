@@ -18,15 +18,17 @@ body {
 }
 
 main {
-  margin-top: 1em;
+  margin: 1em auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 75%;
 }
 
 main h1 {
@@ -49,7 +51,7 @@ main .animation-box {
   position: relative;
 }
 
-main .animation-box .animation {
+main .animation-box .animation-circle {
   position: absolute;
   background-color: #dc3545;
   height: 15px;
@@ -151,6 +153,7 @@ main .animation-box .animation {
   cursor: pointer;
   -webkit-transition: all 0.1s ease-in;
   transition: all 0.1s ease-in;
+  opacity: 0;
 }
 
 .container .option1 .select:hover, .container .option2 .select:hover, .container .option3 .select:hover, .container .option4 .select:hover {
@@ -218,6 +221,9 @@ main .animation-box .animation {
 }
 
 @media (max-width: 600px) {
+  main {
+    width: 85%;
+  }
   .container .option1 .select {
     width: 7px;
     height: 7px;

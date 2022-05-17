@@ -13,6 +13,7 @@
 
     <main>
         
+        <!-- night mode icon -->
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-moon night-mode-toggle" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
             <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
@@ -20,8 +21,9 @@
         
         <h1>Trivia Quiz</h1>
 
+        <!-- animation -->
         <div class="animation-box">
-            <div class="animation"></div>
+            <div class="animation-circle"></div>
         </div>
     </main>
 
@@ -36,31 +38,25 @@
 
 
     <div class="container">
-        <div class="question">0 . Lorem ipsum dolor sit amet.</div>
+        <div class="question">RULES</div>
 
+        <!-- container for all 4 options -->
         <div class="options">
             <div class="option1">
-                <pre>1 . Lorem</pre>
-                <button class="select">
-                </button>
+                <pre>1 . for each question you get 10 seconds to answer</pre>
+                <button class="select"></button>
             </div>
             <div class="option2">
-                <pre>2 . Lorem</pre>
-                <button class="select">
-                    
-                </button>
+                <pre>2 . You can't go back</pre>
+                <button class="select"></button>
             </div>
             <div class="option3">
-                <pre>3 . Lorem</pre>
-                <button class="select">
-                    
-                </button>
+                <pre>3 . You can skip a question if you want</pre>
+                <button class="select"></button>
             </div>
             <div class="option4">
-                <pre>4 . Lorem</pre>
-                <button class="select">
-                    
-                </button>
+                <pre>4 . No negative marking</pre>
+                <button class="select"></button>
             </div>
         </div>
     </div>
@@ -76,6 +72,7 @@
         <button class="next">Next</button>
     </div>
 
+    <!-- div store time of individual questions -->
     <div class="time-log"></div>
     
     <script src="./app.js"></script>

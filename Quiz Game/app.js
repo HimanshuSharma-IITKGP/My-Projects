@@ -69,7 +69,7 @@ const unattempted = document.querySelector(".unattempted") ;
 const nextBtn = document.querySelector(".next") ;
 const startBtn = document.querySelector(".start") ;
 const nightModeToggle = document.querySelector(".night-mode-toggle") ;
-const animationCircle = document.querySelector(".animation") ;
+const animationCircle = document.querySelector(".animation-circle") ;
 const timeLogDiv = document.querySelector(".time-log") ;
 
 const optionsDiv = Array.from(document.querySelectorAll(".options > div")) ;
@@ -96,6 +96,42 @@ const secondsLimit = 10 ;
 var isAnswered = 0;
 var isCorrect = 0 ;
 
+nightModeToggle.addEventListener("click",toggleNightMode) ;
+startBtn.addEventListener("click" ,startTheQuiz) ;
+
+
+function startTheQuiz(){
+    // if end is reached then reload the page on clicking start
+    if(currentQuestionNumber==numberOfQuestions){
+        location.reload() ;
+        return ;
+    }
+    // if someone clicks start in the middle of quiz
+    if(currentQuestionNumber!=0){
+        return ;
+    }
+    // start animation and clock and add event listener to next button
+    optionsDiv.forEach(function(options){
+        options.querySelector(".select").style.opacity = "1" ;
+    }) ;
+
+    animationCircle.classList.add("animate") ;
+    nextBtn.addEventListener("click",showNextQuestion) ;
+    timeId = setInterval(startTimer, 10);
+    showNextQuestion() ;
+}
+
+function toggleNightMode(){
+    document.querySelector("body").classList.toggle("night-mode") ;
+    
+    // changing the attribute of svg
+    if(this.getAttribute("stroke") == "#2c3e50"){
+        this.setAttribute("stroke" , "#ffffff");
+    }
+    else{
+        this.setAttribute("stroke" , "#2c3e50") ;
+    }
+}
 
 
 function showNextQuestion(){
@@ -197,6 +233,7 @@ function checkAnswer (){
 
     isAnswered = 1 ;
 
+    //until the next question is loaded the button should not listen any click
     optionsDiv.forEach(option =>{
         option.querySelector(".select").removeEventListener("click" ,checkAnswer) ;
     });
@@ -211,11 +248,13 @@ function startTimer() {
     if( appendMinutes.innerHTML == minutesLimit &&
         appendSeconds.innerHTML == secondsLimit ){
 
+            // add the time to time-log
             const node = document.createElement("pre") ;
             node.innerHTML = `${currentQuestionNumber}.) ${appendMinutes.innerHTML}:${appendSeconds.innerHTML}` ;
             timeLogDiv.appendChild(node) ;
             node.style.color = "rgba(255, 0, 0, 0.512)" ;
 
+            //and then reset the clock to 0
             appendMinutes.innerHTML = "00" ;
             appendSeconds.innerHTML = "00" ; 
 
@@ -237,18 +276,24 @@ function startTimer() {
             });
         
         }
+
+    // tens are increasing every 10 ms (0.01s)
     tens++;
     
-    
+
+    // if tens become 100 then seconds increase by 1 
     if (tens > 99) {
         seconds++;
         appendSeconds.innerHTML = "0" + seconds;
         tens = 0;
     }
+
+    // and if second are in double digit than no need to add any 0
     if (seconds > 9) {
         appendSeconds.innerHTML = seconds;
     }
 
+    //similarly if seconds become 60 then increase the minutes by 1 
     if(seconds > 59){
         minutes ++ ;
         seconds = 0;
@@ -257,39 +302,10 @@ function startTimer() {
         appendSeconds.innerHTML = "0" + 0 ;
     }
 
+    //and if minutes are in double digit than no need to add any 0
     if(minutes>9){
         appendMinutes.innerHTML = minutes ;
     }
 }
 
-function startTheQuiz(){
-    // if end is reached then reload the page on clicking start
-    if(currentQuestionNumber==numberOfQuestions){
-        location.reload() ;
-        return ;
-    }
-    // if someone clicks start in the middle of quiz
-    if(currentQuestionNumber!=0){
-        return ;
-    }
-    // start animation and clock and add event listener to next button
-    animationCircle.classList.add("animate") ;
-    nextBtn.addEventListener("click",showNextQuestion) ;
-    timeId = setInterval(startTimer, 10);
-    showNextQuestion() ;
-}
 
-function toggleNightMode(){
-    document.querySelector("body").classList.toggle("night-mode") ;
-    
-    // changing the attribute of svg
-    if(this.getAttribute("stroke") == "#2c3e50"){
-        this.setAttribute("stroke" , "#ffffff");
-    }
-    else{
-        this.setAttribute("stroke" , "#2c3e50") ;
-    }
-}
-
-nightModeToggle.addEventListener("click",toggleNightMode) ;
-startBtn.addEventListener("click" ,startTheQuiz) ;

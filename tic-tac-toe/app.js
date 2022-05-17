@@ -61,8 +61,10 @@ function startGame(){
 
     if(user=="circle-o"){
         circleOption.style.backgroundColor = "#ff7675";
+        crossOption.style.backgroundColor = "transparent";
     }
     else{
+        circleOption.style.backgroundColor = "transparent";
         crossOption.style.backgroundColor = "#ff7675";
     }
 }

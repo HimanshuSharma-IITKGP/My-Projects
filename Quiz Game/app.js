@@ -87,7 +87,7 @@ var timeId ;
 
 // shuffling the entire questions array
 const shuffledQuestionsArray = questionsArray.sort(() => 0.5 - Math.random());
-console.table(shuffledQuestionsArray) ;
+// console.table(shuffledQuestionsArray) ;
 
 var currentQuestionNumber = 0 ;
 const minutesLimit =  0;

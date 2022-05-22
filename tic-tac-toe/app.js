@@ -6,7 +6,7 @@ const reset = document.querySelector(".reset");
 const computerScore = document.querySelector(".computer-score");
 const userScore = document.querySelector(".user-score");
 const gameCount = document.querySelector(".games-count") ;
-console.log(gameCount);
+// console.log(gameCount);
 
 var gameState =    [["e", "e", "e"],
                     ["e", "e", "e"],
@@ -140,6 +140,7 @@ function computerMove() {
 
 
     bestMove = findBestMove(gameState) ;
+    console.log(bestMove);
     const row = bestMove.row ;
     const col = bestMove.col ;
 

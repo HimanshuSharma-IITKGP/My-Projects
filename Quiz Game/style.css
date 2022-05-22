@@ -17,7 +17,7 @@ body {
   transition: all 0.3s ease-in-out;
 }
 
-main {
+.header {
   margin: 1em auto;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -31,27 +31,27 @@ main {
   width: 75%;
 }
 
-main h1 {
+.header h1 {
   text-align: center;
   display: inline-block;
   letter-spacing: 0.25em;
 }
 
-main .night-mode-toggle {
+.header .night-mode-toggle {
   width: 30px;
   cursor: pointer;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
 
-main .animation-box {
+.header .animation-box {
   width: 80px;
   height: 15px;
   border-radius: 15px;
   position: relative;
 }
 
-main .animation-box .animation-circle {
+.header .animation-box .animation-circle {
   position: absolute;
   background-color: #dc3545;
   height: 15px;

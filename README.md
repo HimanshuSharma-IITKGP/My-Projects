@@ -1,7 +1,11 @@
 # E-Cell Projects
+
 ---
+
 ## To-Do-List
-### Features In This Project Are :
+
+### Features In This Project Are
+
                 - Fixed input bar
                 - Add a task (by either hitting enter or clicking on plus)
                 - Serial number for each task
@@ -11,7 +15,9 @@
                 - Counter of done tasks and total tasks
 
 ## Quiz App
-### Features In This Project Are :
+
+### Features In This Project Are
+
                 - Toggle night mode
                 - Counter of correct , incorrect and unattempted Questions
                 - Random 10 questions each time , out of 50 pre decided questions
@@ -22,10 +28,18 @@
                 - Log of time spent on each Question
 
 ## Tic-Tac-Toe Game
-### Features In This Project Are : 
+
+### Features In This Project Are
+
                 - Multiple games can be played without resetting
                 - Computer plays the best move
                 - Tracks the score of computer and user
                 - Counter of total games played
                 - Each individual game can be played from different options (cross/circle)
                 - Reset button reset back everything
+
+## React To-Do-List
+
+### Features In This Project Are
+                - All previous features 
+                - Store the tasks in local storage  

@@ -4,13 +4,13 @@ export default function Task(props) {
 
     const toggleCheck = {
         backgroundColor : props.task.isComplete ? "#5cb85c" : "white" ,
-        color : props.task.isComplete ? "white" : "black" 
+        color : props.task.isComplete ? "white" : "black"
     }
 
     return (
         props.task.id && <div className="task" style={toggleCheck}>
             <span className="number">{props.task.id}</span>
-            <input  type="checkbox" 
+            <input  type="checkbox"
                     onChange={()=>props.toggleComplete(props.task.id)}
                     checked={props.task.isComplete}
             />

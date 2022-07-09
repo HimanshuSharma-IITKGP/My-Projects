@@ -67,6 +67,11 @@ export default function Container() {
                     const a = prevTasksArray[i].work;
                     prevTasksArray[i].work = prevTasksArray[i + 1].work;
                     prevTasksArray[i + 1].work = a;
+
+                    
+                    const b = prevTasksArray[i].isComplete;
+                    prevTasksArray[i].isComplete = prevTasksArray[i+1].isComplete;
+                    prevTasksArray[i+1].isComplete = b ;
                 }
 
                 newTasksArray.push(prevTasksArray[i]);
@@ -93,6 +98,11 @@ export default function Container() {
                     const a = prevTasksArray[i].work;
                     prevTasksArray[i].work = prevTasksArray[i + 1].work;
                     prevTasksArray[i + 1].work = a;
+
+                    
+                    const b = prevTasksArray[i].isComplete;
+                    prevTasksArray[i].isComplete = prevTasksArray[i+1].isComplete;
+                    prevTasksArray[i+1].isComplete = b ;
                 }
 
                 newTasksArray.push(prevTasksArray[i]);
